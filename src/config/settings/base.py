@@ -38,7 +38,7 @@ SECRET_KEY = env.str("SECRET_KEY", "django-insecure-8z=f%#hx5+wtm+3rb-jj!zgbku8f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: List = []
 
 
 # Application definition
@@ -94,13 +94,13 @@ WSGI_APPLICATION = "src.config.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_real_world',
-        'USER': 'dev',
-        'PASSWORD': 'dev',
-        'HOST': '127.0.0.1',
-        'PORT': '5434',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "django_real_world",
+        "USER": "dev",
+        "PASSWORD": "dev",
+        "HOST": "127.0.0.1",
+        "PORT": "5434",
     }
 }
 

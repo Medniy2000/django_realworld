@@ -1,2 +1,2 @@
-from .mixins import *
-from .example_models import *
+from .mixins import *  # noqa
+from .example_models import *  # noqa

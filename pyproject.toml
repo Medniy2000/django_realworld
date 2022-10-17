@@ -1,0 +1,11 @@
+[tool.pytest.ini_options]
+addopts = "-p no:warnings --asyncio-mode=strict"
+testpaths = ["tests"]
+
+
+[tool.black]
+line-length = 110
+target-version = ['py39']
+
+
+
