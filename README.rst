@@ -1,7 +1,7 @@
 Django Real World
 ====================
 
-Djnago Real World description
+Django Real World description
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
      :target: https://github.com/ambv/black
@@ -17,6 +17,9 @@ To run app local use::
 
     # to run app perform:
         # install, run postgres, actualize .env
+
+    # install python dependencies:
+    $ pip3 install -r requirements/local.txt
 
     # for local purposes
     $ python manage.py runserver
