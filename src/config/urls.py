@@ -13,8 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from typing import List
 
+from django.conf import settings
+from django.urls import path
 
-urlpatterns: list = [
-    # path("admin/", admin.site.urls),
-]
+urlpatterns: List = []
+
+# Enable API documentation
+if settings.SHOW_API_DOCS:
+    from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
+    urlpatterns.extend(
+        [
+            path("api/docs/yaml-schema/", SpectacularAPIView.as_view(), name="yaml-schema"),
+            path("api/docs/", SpectacularSwaggerView.as_view(url_name="yaml-schema"), name="swagger-ui"),
+            path("api/redoc/", SpectacularRedocView.as_view(url_name="yaml-schema"), name="redoc"),
+        ]
+    )

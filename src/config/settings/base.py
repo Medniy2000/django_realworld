@@ -36,7 +36,8 @@ if READ_DOT_ENV_FILE:
 SECRET_KEY = env.str("SECRET_KEY", "django-insecure-8z=f%#hx5+wtm+3rb-jj!zgbku8fitj^$80ic8dczw)s$#m9h-")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=False)
+SHOW_API_DOCS = env.bool("SHOW_API_DOCS", default=False)
 
 ALLOWED_HOSTS: List = []
 
@@ -50,7 +51,9 @@ DJANGO_APPS: List = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS: List = []
+THIRD_PARTY_APPS: List = [
+    "drf_spectacular",
+]
 
 LOCAL_APPS: List = [
     "src.core",
@@ -102,6 +105,18 @@ DATABASES = {
         "HOST": "127.0.0.1",
         "PORT": "5434",
     }
+}
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Django RealWorld API",
+    "DESCRIPTION": "Your description",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
 
 
