@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  rw_django_service:
+    container_name: rw_django_1
+    restart: always
+    env_file:
+      - .env.example
+    build:
+        context: ./
+        dockerfile: .deploy/local/api/Dockerfile
+    command: >
+      bash -c "python manage.py makemigrations &&
+               python manage.py migrate &&
+               python manage.py runserver 0.0.0.0:8081"
+    volumes:
+      - ./:/app
+    ports:
+      - "8081:8081"
+    depends_on:
+      - rw_postgres_service
+
+  rw_postgres_service:
+    container_name: rw_postgres_service_1
+    image: postgres:13.5
+    env_file:
+      - .env.example
+

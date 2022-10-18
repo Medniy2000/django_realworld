@@ -39,7 +39,7 @@ SECRET_KEY = env.str("SECRET_KEY", "django-insecure-8z=f%#hx5+wtm+3rb-jj!zgbku8f
 DEBUG = env.bool("DEBUG", default=False)
 SHOW_API_DOCS = env.bool("SHOW_API_DOCS", default=False)
 
-ALLOWED_HOSTS: List = []
+ALLOWED_HOSTS: List = ["*"]
 
 
 # Application definition
@@ -99,11 +99,11 @@ WSGI_APPLICATION = "src.config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "django_real_world",
-        "USER": "dev",
-        "PASSWORD": "dev",
-        "HOST": "127.0.0.1",
-        "PORT": "5434",
+        "NAME": env.str("POSTGRES_DB"),
+        "USER": env.str("POSTGRES_USER"),
+        "PASSWORD": env.str("POSTGRES_PASSWORD"),
+        "HOST": env.str("POSTGRES_HOST"),
+        "PORT": env.str("POSTGRES_PORT"),
     }
 }
 
