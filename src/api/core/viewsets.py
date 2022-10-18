@@ -31,7 +31,7 @@ class ReadOnlyModelViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, Gen
     pass
 
 
-class XModelViewSet(
+class ModelViewSet(
     mixins.CreateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.UpdateModelMixin,

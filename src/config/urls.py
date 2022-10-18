@@ -16,9 +16,11 @@ Including another URLconf
 from typing import List
 
 from django.conf import settings
-from django.urls import path
+from django.urls import path, re_path, include
 
-urlpatterns: List = []
+urlpatterns: List = [
+    re_path(r"", include("src.api.urls")),
+]
 
 # Enable API documentation
 if settings.SHOW_API_DOCS:
